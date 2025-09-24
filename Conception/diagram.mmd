@@ -1,0 +1,31 @@
+classDiagram
+    class Converter {
+        +toBinary(n: int): string
+        +toHex(n: int): string
+    }
+
+    class Calculator {
+        +and(a: int, b: int): int
+        +or(a: int, b: int): int
+        +xor(a: int, b: int): int
+        +not(a: int): int
+    }
+
+    class CLI {
+        +run(argv: array): void
+        -validateInput(argv: array): void
+        -displayResults(results: array): void
+    }
+
+    class InputHandler {
+        +parse(argv: array): (int, int)
+        +isPositiveInteger(value: string): bool
+    }
+
+    class OutputHandler {
+        +printTable(a: int, b: int, results: array): void
+        +saveToJson(file: string, results: array): void
+    }
+
+
+
