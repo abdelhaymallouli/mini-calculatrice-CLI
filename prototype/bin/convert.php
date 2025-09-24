@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 require __DIR__ . '/../src/ConverterInterface.php';
-require __DIR__ . '/../src/BitwiseOperationsTrait.php';
+require __DIR__ . '/../src/OperationsTrait.php';
 require __DIR__ . '/../src/Converter.php';
 require __DIR__ . '/../vendor/autoload.php';
 
