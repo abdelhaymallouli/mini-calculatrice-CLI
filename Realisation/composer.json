@@ -1,0 +1,22 @@
+{
+    "name": "yourname/mini-cli-calculator",
+    "description": "A CLI tool for performing bitwise operations on positive integers",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "scripts": {
+        "start": "php bin/calc.php 5 3",
+        "test": "php -l src/Converter.php && php -l src/Calculator.php && php -l src/ConverterInterface.php && php -l src/OperationsTrait.php && php -l bin/calc.php",
+        "lint:php": "php -l src/Converter.php && php -l src/Calculator.php && php -l bin/calc.php",
+        "build": "composer install",
+        "check": "composer validate",
+        "save": "php bin/calc.php 5 3 -o samples/output.json"
+    }
+}
