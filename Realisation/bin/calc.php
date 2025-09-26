@@ -82,11 +82,22 @@ try {
             throw new \InvalidArgumentException("Unsupported file extension for '$file'. Use .json or .txt");
         }
     } else {
-        // Filter out options to get positional arguments
-        $args = array_filter($argv, function ($arg, $index) use ($options) {
-            return $index > 0 && !in_array($arg, ['-o', '--o', '-f', '--f']) && !in_array($arg, (array)($options['o'] ?? [])) && !in_array($arg, (array)($options['f'] ?? []));
-        }, ARRAY_FILTER_USE_BOTH);
-        $args = array_values($args); // Reindex array
+// Remove the script name (first element of $argv)
+array_shift($argv);
+$args = array_filter(
+    $argv,
+    function ($arg) use ($options) {
+        // skip option flags
+        if (in_array($arg, ['-o', '--o', '-f', '--f'])) return false;
+        // skip values of -o
+        if (isset($options['o']) && $arg === $options['o']) return false;
+        // skip values of -f
+        if (isset($options['f']) && $arg === $options['f']) return false;
+        // otherwise keep it
+        return true;
+    }
+);
+$args = array_values($args); // reindex 0,1
 
         if (count($args) !== 2) {
             throw new \InvalidArgumentException("Require exactly two positive integers as arguments (e.g., 'php bin/calc.php 5 3 [-o output.json]')");

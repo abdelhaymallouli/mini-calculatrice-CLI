@@ -56,7 +56,7 @@ NOT A: -6 (…11111010)
 Use a JSON input file:
 
 ```bash
-php bin/calc.php -f samples/input.json [-o output.json]
+php bin/calc.php -f samples/input.txt [-o output.json]
 ```
 
 Save results as JSON:
